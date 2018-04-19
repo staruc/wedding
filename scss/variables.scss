@@ -1,0 +1,284 @@
+$black: #000000;
+$white: #ffffff;
+$gray1: #75787B;
+$gray2: #989A9C;
+$gray3: #BABBBD;
+$gray4: #D9D9D6;
+$gray5: #ECECEA;
+$tan1: #AFA9A0;
+$tan2: #C3BFB8;
+$blue: #29588C;
+
+$red: #A24040;
+$pink: #E0A297;
+$blue2: #29588C;
+$blue3: #82B2B4;
+$green1: #4D6324;
+$green2: #A8AD00;
+
+$green: #b9bf15;
+$austins_green: #9eab05;
+$gray1: #4d4d4d;
+$gray2: #8b8989;
+$gray3: #a6a6a6;
+$gray4:	#cfcfcf;
+$gray5: #e5e5e5;
+$gray6: #f0f0f0;
+
+$tan: #FFE8B5;
+$or2: #FFB53C;
+$or1: #DB5F26;
+$green: #62785F;
+$rust: #71220D;
+
+$cubic_out: cubic-bezier(0.22, 0.61, 0.36, 1);
+$quad_in_out: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
+@mixin trans($property: all,$duration: 150ms,$easing: ease-in-out,$delay: 0ms) {
+	-webkit-transition: $property $duration $easing $delay;
+	   -moz-transition: $property $duration $easing $delay;
+		 -o-transition: $property $duration $easing $delay;
+			transition: $property $duration $easing $delay;
+}
+
+@mixin valign($offset: 50%, $relative_offset: -50%, $pos: relative) {
+	position: $pos;
+	top: $offset;
+	-webkit-transform: translateY($relative_offset);
+	-ms-transform: translateY($relative_offset);
+	transform: translateY($relative_offset);	
+}
+
+
+
+
+@mixin baron() {
+	font-family: "baron_neue", sans-serif;
+}
+@mixin yrsa() {
+	font-family: "yrsabold", serif;
+	font-weight: normal;
+}
+@mixin gotham() {
+	font-family: "Gotham SSm A", "Gotham SSm B", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@mixin tg() {
+	font-family:"Trade Gothic W01", sans-serif;;
+}
+@mixin bookman() {
+	font-family:"Bookman Old Style W01", serif;;
+}
+
+
+@mixin placeholder($color: inherit ) {
+	&::input-placeholder {
+	   color: $color;
+	}
+	&::-webkit-input-placeholder {
+	   color: $color;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	   color: $color;
+	}
+	&::-moz-placeholder {  /* Firefox 19+ */
+	   color: $color;
+	}
+	&:-ms-input-placeholder {  
+	   color: $color;
+	}
+}
+
+@mixin gridpads($offset) {
+	margin-left: -$offset;
+	& > [class *=pure-u], .gform_fields > [class *=pure-u] {
+	  box-sizing: border-box;
+	  padding-left: $offset;
+
+	}
+}
+
+@mixin focus($color) {
+	outline: none;
+	-webkit-transition: border 200ms ease-in-out 0ms, box-shadow 200ms ease-in-out 0ms;
+	-moz-transition: border 200ms ease-in-out 0ms, box-shadow 200ms ease-in-out 0ms;
+	-o-transition: border 200ms ease-in-out 0ms, box-shadow 200ms ease-in-out 0ms;
+	transition: border 200ms ease-in-out 0ms, box-shadow 200ms ease-in-out 0ms;
+	&:focus {
+		border: 2px solid $color;
+		box-shadow: 0 0 5px $color;
+	}
+}
+
+
+@mixin amatic() {
+    font-family: 'Amatic SC';	
+}
+
+
+@mixin raleway() {
+    font-family: 'Raleway';	
+}
+
+
+@mixin script() {
+    font-family: 'Dancing Script';	
+}
+
+
+@mixin rok() {
+    font-family: 'Montserrat';	
+}
+
+@mixin main_nav($size: 38px) {
+	@include rok();
+	font-size: $size;
+	line-height: 1.2em;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+};
+@mixin sec_nav($size: 17px) {
+	@include yrsa();
+	font-size: $size;
+	line-height: 1.5em;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+};
+@mixin footer($size: 11px) {
+	@include gotham();
+	font-size: $size;
+	line-height: 1.36em;
+	//letter-spacing: 0.2em;
+};
+@mixin jumbo($size: 52px) {
+	@include amatic();
+	font-size: $size;
+	line-height: 1.1em;
+};
+
+@mixin h1($size: 9vw) {
+	@include rok();
+	font-size: $size;
+	font-weight: normal;
+	line-height: 0.9em;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+};
+@mixin h2($size: 6.5vw) {
+	@include script();
+	font-size: $size;
+	font-weight: 400;
+	line-height: 1.45em;
+	letter-spacing: 0.02em;
+	text-transform: none;
+	margin: 0.5em 0;
+};
+@mixin h3($size: 3vw) {
+	@include rok();
+	font-weight: 300;
+	font-size: $size;
+	line-height: 1.2em;
+	letter-spacing: 0.06em;
+	text-transform: none;
+	margin: 0.5em 0;
+};
+@mixin h4($size: 5vw) {
+	@include script();
+	font-weight: 400;
+	font-size: $size;
+	line-height: 1.45em;
+	letter-spacing: 0.02em;
+	text-transform: none;
+};
+@mixin h5($size: 16px) {
+	@include tg();
+	font-weight: 700;
+	font-size: $size;
+	line-height: 1.67em;
+	letter-spacing: 0.125em;
+	text-transform: uppercase;
+};
+@mixin h6($size: 20px) {
+	@include tg();
+	font-weight: 800;
+	font-size: $size;
+	line-height: 1.25em;
+	letter-spacing: 0.01em;
+	text-transform: none;
+};
+@mixin h7($size: 29px) {
+	@include tg();
+	font-weight: 400;
+	font-size: $size;
+	line-height: 1.45em;
+	letter-spacing: 0.01em;
+	text-transform: none;
+};
+@mixin h8($size: 80px) {
+	@include bookman();
+	font-size: $size;
+	font-weight: 400;
+	line-height: 1.33em;
+	letter-spacing: 0.01em;
+	text-transform: none;
+};
+
+@mixin button($size: 24px) {
+	@include rok();
+	font-weight: 700;
+	font-size: $size;
+	line-height: 1.67em;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+};
+
+@mixin p($size: 2.5vw) {
+	@include rok();
+	font-weight: 400;
+	font-size: $size;
+	line-height: 1.4em;
+	text-transform: none;
+};
+
+@mixin small($size: 16px) {
+	@include rok();
+	font-weight: 300;
+	font-size: $size;
+	line-height: 1.43em;
+	text-transform: none;
+}
+@mixin kaiju($size: 293px) {
+	@include tg();
+	font-weight: 300;
+	font-size: $size;
+	line-height: 1em;
+	text-transform: none;
+}
+
+
+
+@keyframes slide_down {
+	0% { height: 0%; }
+	100% { height: 100%; }
+}
+@keyframes slide_right {
+	0% { width: 0%; }
+	100% { width: 100%; }
+}
+@keyframes slide_up {
+	0% { height: 100%; }
+	100% { height: 0%; }
+}
+@keyframes slide_left {
+	0% { width: 100%; }
+	100% { width: 0%; }
+}
+
+@keyframes go_down {
+	0% { transform: scale(0.8) translate(0, 0); }
+	100% { transform: scale(0.2) translate(0, 80vh); }
+}
+
+

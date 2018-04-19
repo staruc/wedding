@@ -1,0 +1,122 @@
+a[href^=tel] {color: inherit;} // fix for apple device telephone link display
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.centert {text-align: center;}
+.leftt {text-align: left;}
+.rightt {text-align: right;}
+.justt {text-align: justify;}
+.caps {text-transform: uppercase!important;}
+.trans {
+	@include trans(all, 0ms);
+}
+.notrans {
+	@include trans(all, 0ms);
+}
+
+.texttransno {text-transform: none!important;}
+
+.valign {@include valign(50%);}
+.vam {vertical-align: middle;}
+.centerm {
+	margin-left: auto; margin-right: auto;
+	&.abs {left:0;right:0;}
+}
+
+body {
+	margin: 0;
+	font-size: 16px;
+}
+.revlink {
+	text-decoration: none;
+	&:hover {text-decoration: underline;}
+}
+.nun {text-decoration: none;}
+.nom {margin:0;}
+.nop {padding:0;}
+.bg {
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	&.top {
+		background-position: center top;
+	}
+}
+.clearfix {clear: both;
+
+	&::after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+} 
+.pure-g, .font0 {
+	font-size: 0;
+}
+[class *=pure-u] {
+	font-size: 1rem;
+}
+
+.nocaps {text-transform: none!important;}
+.ib {display: inline-block;}
+
+.rel {position: relative;}
+.abs {position: absolute;}
+.fixman {position: fixed; top:0;}
+.oflo {overflow: hidden;}
+
+
+.object_fit {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+img.object_fit, video.object_fit {
+	position: absolute;
+	object-position: 50% 50%;
+	object-fit: cover;
+
+	&.top {
+		object-position: 50% 5%;
+
+	}
+	&.bottom {
+		object-position: 50% 95%;
+
+	}
+}
+
+.w100 {width:100%;}
+
+.vtop {
+	vertical-align: top;
+}
+
+.bl {display: block;}
+
+.black {color: $black;}
+.white {color: $white;}
+
+
+.tan {color: $tan;}
+.or2 {color: $or2;}
+.or1 {color: $or1;}
+.green {color: $green;}
+.rust {color: $rust;}
+
+.block {
+	&.white {background-color: $white;}
+	&.black {background-color: $black;}
+	&.tan {background-color: $tan};
+	&.or2 {background-color: $or2};
+	&.or1 {background-color: $or1};
+	&.green {background-color: $green};
+	&.rust {background-color: $rust};
+
+	&.transparent {background-color: transparent;}
+
+}

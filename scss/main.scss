@@ -1,0 +1,646 @@
+@import 'variables.scss';
+
+/*! main */
+
+@media only screen and (min-width: 1px) {
+	
+	ul, li {
+		list-style: none outside;
+		margin: 0;
+		padding: 0;
+	}
+	/*
+	h1, .h1 {@include h1();}
+	h2, .h2 {@include h2();}
+	h3, .h3 {@include h3();}
+	h4 {margin-bottom: 0.6em;}
+	p, .p1 {@include p();}
+	*/
+	small, .small {
+		@include small();
+
+	}
+	.button {
+
+		span {
+			@include trans();
+		}
+
+		&.no_bdr {
+			span {
+				border-top-color: transparent;
+			}
+		}
+		&[href].black {
+			&::before {
+				background-color: $black;
+			}
+		}
+
+		&[href]:hover {
+			&.black {
+				span {
+					color: $green;
+				}
+			}
+		}
+	}
+		.changeling_1 .button {
+			&:hover {
+				span {
+					color: $green;
+				}
+			}
+		}
+
+
+	.sep {
+		height:4px;
+		margin: 1rem 0;
+	}
+
+	.logged-in.admin-bar header, .logged-in.admin-bar .header {
+		top: 32px;
+	}
+
+	.mc_embed_signup_scrol {
+		position: relative;
+		width: 200px;
+		background-color: $white;
+	}
+	.mc-field-group .email {
+		@include button();
+		display: inline-block;
+		height: 36px;
+		width:calc(100% - 34px);
+		border:0;
+		border-radius: 0;
+		//color: $gray1;
+		padding-left: 5px;
+		@include placeholder($gray1);
+	}
+	#mc-embedded-subscribe {
+		@include p();
+		right: 0;
+		background-color: transparent;
+		display: inline-block;
+		//color: $gray1;
+		width:32px;
+		height:36px;
+		border-radius: 0;
+		border: none;
+	}
+
+	.map-button {
+		display: block;
+		padding: 0.2em 0;
+		cursor: pointer;
+	}
+	.map-wrap-left {
+		@include trans();
+		@include valign(50%, -50%, absolute);
+		overflow: hidden;
+		height: 30px;
+		width: 30px;
+		background-color: $white;
+		padding: 3px 3px;
+		.map-buttons-full-head {text-align: center;}
+		&.active {
+			.map-buttons-full-head {text-align: right;}
+			height: 270px;
+			width: 200px;
+			padding: 5px 10px;
+		}
+	}
+
+	#map-buttons {
+		width: 156px;
+		margin: 0 auto;
+	}
+	.map-buttons-full-head {text-align: right; font-size: 20px; color: $gray1; cursor: pointer;}
+	.map-buttons-mobile-head {display: none;}
+	.inactive-button {display:inline;}
+	.active-button {display:none;}
+	.active {
+		.inactive-button {display:none;}
+		.active-button {display:inline;}
+	}
+	
+	.gal_cap {
+		@include trans(opacity, 200ms, linear, 100ms);
+
+		opacity: 0;
+		color: $white;
+		text-shadow: 0px 0px 10px rgba(0,0,0, 0.5);
+		h2 {@include h2(14px);}
+	}
+
+	.balign {
+		@include valign(100%, -100%, absolute);
+		padding: 0 0 10px 10px;
+	}
+
+
+	.gform_wrapper {text-align:left;}
+	
+	.gform_body {
+	    margin-left: -20px;
+	    
+	    ul {
+	        list-style-type: decimal;
+	    }
+		.gfield {
+			padding-left: 20px;
+		}
+	}
+
+	.gfield {
+		opacity: 1;
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 5px;
+		vertical-align: top;
+		
+		label {
+			@include p();
+			display: block;
+			margin-bottom: 0.5em;
+			color: $tan;		
+
+		}
+		& > label {
+			display:block;
+		
+		}
+		
+
+		&.hide_label {
+			label {
+				display: none;
+			}
+		}
+		input, textarea, select {
+			@include p();
+			@include placeholder($black);
+
+			margin-bottom:0.5em;
+
+			width: 100%;
+			padding-left:1em;
+			color: $black;
+			border-radius: 0;
+			height:2em;
+			border: 2px solid $white;
+
+			background-color: $white;
+			-webkit-appearance: none;
+			-webkit-border-radius: 0px;
+			vertical-align: top;
+			&:focus {
+				color: $black;
+				border-color: $green;
+				    outline: $green auto 5px;
+			}
+		}
+
+		select {
+			 -webkit-appearance: menulist;
+		}
+
+		textarea {
+			height:8em;
+		}
+		option {color: $black;}
+
+		&.gform_hidden {display:none;}
+
+		&.gfield_error {
+			input, textarea, select, option {
+				border: 1px solid red;
+				@include placeholder(red);
+			}
+		}
+		&.margin_below {
+			margin-bottom: 50px;
+		}
+	
+		&.baseline {
+			vertical-align: bottom;
+		}
+		[type="submit"] {
+			@include button();
+			border-radius: 5px;
+			border:0;
+			color: $green;
+			&:hover {
+				color: $tan;
+			}
+		}
+
+	}
+	.ginput_container_select {
+		z-index: 10;
+		position: relative;
+		&::after {
+			content: "\f107";
+			font-family: "FontAwesome";
+			@include valign(50%, -50%, absolute);
+			right: 10px;
+			z-index: 10;
+			font-size: 30px;
+			color: $white;
+		}
+		label {
+			@include h5();
+		}
+		select {
+			position: relative;
+			z-index: 15;
+			-moz-appearance: none;
+		}
+	}
+	.calendar_field {
+		.ginput_container {
+			z-index: 10;
+			position: relative;
+		}
+		.ginput_container::after {
+			content: "\f133";
+			font-family: "FontAwesome";
+			@include valign(50%, -50%, absolute);
+			right: 10px;
+			z-index: 10;
+			font-size: 30px;
+			color: $white;
+		}
+		input {
+			position: relative;
+			z-index: 15;
+		}
+	}
+	.gform_footer {
+		text-align: left;
+		padding-top:50px;
+		padding-bottom:50px;
+		input {
+			@include trans();
+			@include button();
+			background-color: $green;
+			color: $white;
+			border:none;
+		    padding: 0.4rem 2rem 0.4rem 2rem;
+			-webkit-appearance: none;
+			border-radius: 10px;
+
+			&:hover {
+				background-color: $gray1;
+			}
+
+		}
+	}
+	.gfield_required {
+		display: none;
+	}
+	.validation_message, .validation_error {
+		display: none;
+	}
+	.gfield_error .validation_message {
+		@include p();
+		//position: absolute;
+		display: block;
+		color: red;
+		&::before {
+			content: "\f062";
+			font-family: "FontAwesome";
+			padding-right:0.25em;
+		}
+	}
+	.gform_confirmation_wrapper {
+		@include h4();
+		color: $black;
+		padding: 50px 0;
+	}
+
+	.breakme {
+		overflow-wrap: break-word;
+		word-break: break-word;
+	}
+
+
+	
+	.fade {
+		@include trans(all, 1000ms, $cubic_out, 100ms);
+		
+		&.faded {
+			opacity:1;
+			transform: translate(0,0%);
+			
+			svg {
+				stroke-width: 2.0;
+				animation: svg_icon 4s ease-in-out forwards;
+				animation-delay: 0s;
+			}
+
+		}
+		&.faded.valign {
+			transform: translate(0,-50%);
+		}
+
+	}
+	
+
+	.shadowed {
+		text-shadow: 1px 1px 6px rgba(0,0,0, 0.2), 1px 1px 3px rgba(0,0,0, 0.4);
+	}
+	
+
+	.butter {
+		@include trans(height, 300ms, $quad_in_out, 0s);
+	}
+
+	#burger {
+		.lines, .lines::before, .lines::after {
+			transition: all 0.3s ease-in-out 0s;
+		}
+		
+	}
+
+
+	.content {
+
+		ul {
+			@include p();
+			margin: 1em 0;
+		}
+		li {
+			list-style: disc outside;
+			margin-left: 2em;
+		/*
+			
+			list-style: none outside;
+			padding-left: 0.5em;
+			position: relative;
+			&::before {
+				position: absolute;
+				left:0;
+				content: "\00B7";
+			}
+		*/
+		}
+		
+		&.bold_p {
+			
+			p {font-weight: 800;}
+
+		}
+
+		p a, li a {
+			color: inherit;
+		}
+
+	}
+
+
+	.slick-dots {
+		list-style: none outside;
+		display: block;
+		height: 20px;
+		margin: 0 auto;
+		
+		text-align: center;
+		padding:30px 0 0 0;
+		
+		.high_set & {
+			position: absolute;
+			padding:0;
+			left: 0;
+			right: 0;
+			font-size: 20px;
+			top: 70px;
+		}
+
+		
+		li {
+			list-style: none outside;
+			background-color: transparent;
+			opacity: 0.3;
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			border-radius: 50%;
+			border: 2px solid $black;
+			margin: 0 10px;
+			&.slick-active, &:hover {background-color: $black; opacity: 0.7;}
+			&:hover {opacity: 0.7; }
+		}
+		button {
+			position: absolute;
+			display: block;
+			width: 14px;
+			height: 14px;
+			opacity: 0;
+			border:0;
+		}
+	}
+	
+	#rsvpPlugin {
+
+		input, select, textarea {
+			@include p();
+			background-color: $white;
+			color: $black;
+			border:none;
+			border-radius:2px;
+			padding: 0.2em;
+			width: 100%;
+		}
+		[type="radio"], [type="checkbox"] {
+			width: auto;
+			margin-right: 0.5em;
+		}
+
+		label {
+			@include p();
+
+			font-weight: bold;
+		}
+		[name="mainEmail"] {
+			min-width: 280px;
+		}
+		[type="submit"] {
+			background-color: $or2;
+			color: $green;
+			padding: 0.4em 0em;
+
+		}
+		[type="submit"][value="Yes"], [type="submit"][value="No"], [type="submit"][value="RSVP"] {
+			margin-top:1rem;
+			width:140px;			
+		}
+		[type="submit"][value="Submit RSVP"] {
+			margin-top:1rem;
+			width:220px;
+		}
+
+	}
+
+	.rsvpParagraph {
+		margin:0;
+		label {
+			min-width: 110px;
+			display: inline-block;
+		}
+
+	}
+	.rsvpFormField {
+		margin: 1rem 0;
+		&.rsvpFormField.rsvpBorderTop {
+			padding-top: 1rem;
+		}
+
+	}
+
+	.rsvpFormField + .rsvpParagraph:last-child {
+		text-align: center;
+	}
+
+	#rsvpForm {
+		padding:20px;
+		border: 1px solid $or1;
+	}
+	#rsvpPlugin {
+		padding: 4px;
+		border: 1px solid $or1;
+
+		& > #rsvpPlugin {
+			padding: 20px;
+		}
+	}
+	.rsvpParagraph + #rsvpPlugin {
+		padding: 20px;
+	}
+
+
+	
+	.rsvp_on {
+		display: block;
+		//border: dotted 1px $or1;
+		padding: 30px;
+		margin-bottom: 50px;
+	
+	}
+	.rsvp_wrap {
+		@include p();
+		margin-bottom: 50px;
+	}
+
+
+
+	.lil_map {
+		width: 100%;
+		height:300px;
+	}
+
+	.current-menu-item a {
+		font-weight: 700;
+	}
+
+
+
+
+}
+@media screen and (max-width: 640px) {
+
+	#rsvpPlugin {
+		label, input, select, textarea {
+			@include p(17px);
+		}
+		input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]), select, textarea {
+			width: 100%;
+		}
+
+	}
+
+	
+	.gfield_error .validation_message {
+		@include p(17px);
+	}
+	.gfield {
+		input, textarea, select {
+			@include p(17px);
+		}
+	}
+
+
+
+}
+@media screen and (min-width: 641px) {
+
+
+	.gfield {
+		width: 50%;
+		&.full_width {
+			width: 100%;
+		}
+		&.third_width {
+			width: 33.333%;
+		}
+		&.checkrows, &.checkboxes {
+			margin-bottom: 100px;
+		}
+
+	}
+
+	
+
+	.gform_footer {
+
+	}
+
+	.tblock {display: table;}
+	.tcell {display: table-cell; vertical-align: middle;}
+
+
+	.map-wrap-left {
+		&.active {
+			height: 290px;
+			width: 290px;
+		}
+	}
+
+
+	.button + .button {
+		margin-left: 10px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+
+
+}
+
+@media screen and (min-width: 901px) {
+	
+	p, .p1, .content ul, .content li {
+		@include p(22px);
+	}
+
+}
+
+@media screen and (min-width: 901px) and (max-width: 1100px) {
+
+	
+}
+
+@media screen and (min-width: 1061px) {
+
+}
+
+@media screen and (min-width: 1601px) {
+
+
+
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles here. i know. */
+}

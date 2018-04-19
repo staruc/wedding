@@ -1,0 +1,115 @@
+@media only screen and (min-width: 1px) {
+
+		.lines {
+			background:#000000;
+			&::before, &::after {background:#000000;}
+		}
+
+	$button-size : 32px; 
+	$transition: .3s; // increase this to see the transformations in slow-motion
+	$color : #000000;
+	.lines-button {
+	  //color: $color;
+	  display: inline-block;
+	  padding: 0px 0 10px 0;
+	  transition: .3s;
+	  cursor: pointer;
+	  user-select: none;
+	  border-radius: $button-size/10;
+	 
+
+	  &:hover {
+	    opacity: 1;
+	    .lines {
+			transform: rotate(-180deg);
+			&::before {
+				transform: rotate(180deg);
+			}
+			&::after {
+				transform: rotate(180deg);
+			}
+	    }
+
+		
+	  }
+	 
+	  &:active {
+	    transition: 0;
+	    //background: rgba(0,0,0,.1);
+	  }
+	}
+
+	@mixin line {
+	  display: inline-block;
+	  width: $button-size;
+	  height: $button-size/10;
+	  //background: $color;
+	  border-radius: $button-size/10; 
+	  transition: $transition;
+	}
+	.lines {
+	   
+	  //create middle line
+	  @include line;
+	  position: relative; 
+
+	  /*create the upper and lower lines as pseudo-elements of the middle line*/
+	  &:before, &:after {
+
+		transition: $transition;
+	   
+	   @include line;
+	    position: absolute;
+	      left:0;
+	    content: '';
+	    transform-origin: $button-size/14 center;
+	  }
+	  &:before { top: $button-size/4; }
+	  &:after { top: -$button-size/4; }
+	}
+
+	.lines-button:hover {
+	  opacity: 1;
+	     
+	  /*.lines {
+	    &:before { top: $button-size/3; }
+	    &:after { top: -$button-size/3; }
+	  }*/
+	}
+
+	.lines-button.x2 .lines{
+
+	    transition: all .2s 0s ease;
+	 
+	    &:before, &:after{
+	      //set transform origin back to center
+	      transform-origin: 50% 50%;
+	      transition: all .2s 0s ease;
+	    }
+	}
+	.lines-button.x2 .lines.close {
+	 
+
+	    transition: all .2s 0s ease;
+	    background: transparent;
+	 
+	    &:before, &:after{
+	      transition: all .2s ease;      
+	      top:0;
+	      width: $button-size;
+	    }
+	    &:before{
+	      -webkit-transform: rotate3d(0,0,1,45deg);
+	      -moz-transform: rotate3d(0,0,1,45deg); 
+	      -o-transform: rotate3d(0,0,1,45deg); 
+	      transform: rotate3d(0,0,1,45deg); 
+
+	    }
+	    &:after{
+	      -webkit-transform: rotate3d(0,0,1,-45deg);
+	      -moz-transform: rotate3d(0,0,1,-45deg); 
+	      -o-transform: rotate3d(0,0,1,-45deg); 
+	      transform: rotate3d(0,0,1,-45deg); 
+	    }
+	}
+}

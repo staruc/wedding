@@ -2644,7 +2644,7 @@ Combined secondary stylesheets. Would set to "async" load in modern browsers.
       display: block; }
     .gfield.hide_label label {
       display: none; }
-    .gfield input, .gfield textarea, .gfield select {
+    .gfield input:not([type="radio"]), .gfield textarea, .gfield select {
       font-family: 'Montserrat';
       font-weight: 400;
       font-size: 2.5vw;
@@ -2661,19 +2661,19 @@ Combined secondary stylesheets. Would set to "async" load in modern browsers.
       -webkit-appearance: none;
       -webkit-border-radius: 0px;
       vertical-align: top; }
-      .gfield input::input-placeholder, .gfield textarea::input-placeholder, .gfield select::input-placeholder {
+      .gfield input:not([type="radio"])::input-placeholder, .gfield textarea::input-placeholder, .gfield select::input-placeholder {
         color: #000000; }
-      .gfield input::-webkit-input-placeholder, .gfield textarea::-webkit-input-placeholder, .gfield select::-webkit-input-placeholder {
+      .gfield input:not([type="radio"])::-webkit-input-placeholder, .gfield textarea::-webkit-input-placeholder, .gfield select::-webkit-input-placeholder {
         color: #000000; }
-      .gfield input:-moz-placeholder, .gfield textarea:-moz-placeholder, .gfield select:-moz-placeholder {
+      .gfield input:not([type="radio"]):-moz-placeholder, .gfield textarea:-moz-placeholder, .gfield select:-moz-placeholder {
         /* Firefox 18- */
         color: #000000; }
-      .gfield input::-moz-placeholder, .gfield textarea::-moz-placeholder, .gfield select::-moz-placeholder {
+      .gfield input:not([type="radio"])::-moz-placeholder, .gfield textarea::-moz-placeholder, .gfield select::-moz-placeholder {
         /* Firefox 19+ */
         color: #000000; }
-      .gfield input:-ms-input-placeholder, .gfield textarea:-ms-input-placeholder, .gfield select:-ms-input-placeholder {
+      .gfield input:not([type="radio"]):-ms-input-placeholder, .gfield textarea:-ms-input-placeholder, .gfield select:-ms-input-placeholder {
         color: #000000; }
-      .gfield input:focus, .gfield textarea:focus, .gfield select:focus {
+      .gfield input:not([type="radio"]):focus, .gfield textarea:focus, .gfield select:focus {
         color: #000000;
         border-color: #62785F;
         outline: #62785F auto 5px; }

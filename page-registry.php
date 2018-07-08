@@ -10,8 +10,8 @@
 	<div class="spacer50"></div>
 	<div class="container">
 
-
-			
+		<div class="form_intro">
+			<p>Please enter be your name as spelled in your invitation</p>
 			<div class="pure-g">
 				<div class="pure-u-sm-1-1 pure-u-md-2-3">
 					<form action="" class="rsvp_lookup_form rsvp">
@@ -19,8 +19,10 @@
 							<div class="gform_body">
 								<ul>
 									<li class="gfield">
-										<label for="first_name">First name</label>
-										<div class="ginput_container"><input type="text" name="first_name"></div>
+										<div class="ginput_container"><input type="text" name="first_name" placeholder="Your first name"></div>
+									</li>
+									<li class="gfield">
+										<div class="ginput_container"><input type="text" name="last_name" placeholder="Your last name"></div>
 									</li>
 								</ul>
 							</div>
@@ -30,7 +32,12 @@
 				</div>
 				<div class="lookup_result tan p1"></div>
 			</div>
+			<div class="spacer50"></div>			
+		</div>
 
+		
+		<div id="gravity_contact" data-form-id="1"><?php //echo gravity_form( 1, false, false, false, null, true, null, false ); ?></div>
+	
 
 		<div class="pure-g rel">
 			<div class="vrule block tan abs mrule"></div>

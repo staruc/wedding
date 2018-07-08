@@ -179,7 +179,7 @@
 				display: none;
 			}
 		}
-		input, textarea, select {
+		input:not([type="radio"]), textarea, select {
 			@include p();
 			@include placeholder($black);
 
@@ -199,7 +199,7 @@
 			&:focus {
 				color: $black;
 				border-color: $green;
-				    outline: $green auto 5px;
+				outline: $green auto 5px;
 			}
 		}
 

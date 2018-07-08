@@ -73,19 +73,55 @@ add_action('wp_ajax_nopriv_gravityboy', 'ajax_gravityboy');
 
 
 function ajax_rsvpLookup() {
+    $lookup_html = '';
     $query_data = $_GET;
     $first_name = ($query_data['first_name']) ? $query_data['first_name'] : false;
+    $last_name = ($query_data['last_name']) ? $query_data['last_name'] : false;
 
 
     global $wpdb;
-    $results = $wpdb->get_results( 'SELECT * FROM `wedding_guests` WHERE `first_name` LIKE "'.$first_name.'"', ARRAY_A );
+    $results = $wpdb->get_results( 
+        'SELECT * FROM `wedding_guests` 
+        WHERE `first_name` LIKE "'.$first_name.'" 
+        AND `last_name` LIKE "'.$last_name.'"
+        ', ARRAY_A );
+
+    $results_last = $wpdb->get_results( 
+        'SELECT * FROM `wedding_guests` 
+        WHERE `last_name` LIKE "'.$last_name.'"
+        ', ARRAY_A );
 
 
-    if(!empty($results)) {
-        echo 'i know you,' . $first_name;
-    } else {
-        echo 'you\'re not invited.';
-    }
+
+    if((empty($results) && empty($results_last)) || $first_name.$last_name === 'GuestGuest') {
+        $lookup_html = 'Hm. I\'m not sure you\'re invited.';
+
+    } elseif( !empty($results) ) {
+
+
+        $guest_first = $results[0]['guest_first'];
+        $guest_last = $results[0]['guest_last'];
+        $invite_id = $results[0]['guest_id'];
+
+        $lookup_html .= 'i know you, ' . $first_name;
+        $lookup_html .= '<input type="hidden" name="guest_first" value="'.$guest_first.'"><input type="hidden" name="guest_last" value="'.$guest_last.'"><input type="hidden" name="invite_id" value="'.$invite_id.'">';
+        $lookup_html .= '<div class="gravity_init"></div>';
+
+    } elseif(!empty($results_last) & $last_name != '') {
+
+        $lookup_html .= '<p>I couldn\'t find an exact match, but I did find the last name <b>'.$last_name.'</b>, is your name below?</p>';
+
+        foreach($results_last as $last_match) {
+            $lookup_html .= '<li>'.$last_match['first_name'].'</li>';
+        }
+
+        $lookup_html = '<ul>'.$lookup_html.'</ul>';
+
+
+    } 
+    //echo var_export($results);
+
+    echo $lookup_html;
 
     die();
 }
@@ -95,9 +131,17 @@ function ajax_gravityBoy() {
 
     $query_data = $_GET;
     $form_id = ($query_data['form_id']) ? $query_data['form_id'] : false;
+    $invite_id = ($query_data['invite_id']) ? $query_data['invite_id'] : false;
+    $guest_first = ($query_data['guest_first']) ? $query_data['guest_first'] : false;
+    $guest_last = ($query_data['guest_last']) ? $query_data['guest_last'] : false;
     $grav_html = '';
 
-    $grav_html .= gravity_form( $form_id, false, false, false, null, true, null, false );
+
+
+    $grav_html .= //gravity_form( $form_id, $display_title = false, $display_description = false, $display_inactive = false, $field_values = 'has_guest2=Test', $ajax = true, $tabindex, $echo = false );
+
+    $grav_html = do_shortcode( '[gravityform id="1" title="false" field_values="has_guest='.$guest_first.$guest_last.'" ajax="true"]', $ignore_html = false );
+
     echo $grav_html;
     die();
 }

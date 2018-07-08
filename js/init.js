@@ -29,10 +29,10 @@ gravityformsJs = document.createElement('script'),
 placeholdersJs = document.createElement('script');
 maskedInputJs = document.createElement('script');
 
-jsonJs.src = site.plugins_path + '/gravityforms/js/jquery.json.min.js'+qstring,
+jsonJs.src = site.plugins_path + '/gravityforms/js/jquery.json.js'+qstring,
 gravityformsJs.src = site.plugins_path + '/gravityforms/js/gravityforms.min.js'+qstring,
 placeholdersJs.src = site.plugins_path + '/gravityforms/js/placeholders.jquery.min.js'+qstring;
-maskedInputJs.src = site.plugins_path + '/gravityforms/js/jquery.maskedinput.min.js'+qstring;
+maskedInputJs.src = site.plugins_path + '/gravityforms/js/conditional_logic.min.js'+qstring;
 //end gforms js
 
 
@@ -49,7 +49,7 @@ pluginsJs.onload = function() {
 		document.body.appendChild(fancyBoxJs);
 
 	if(document.getElementById('gravity_contact')) {
-		document.body.appendChild(gravityBoyJs);
+		//document.body.appendChild(gravityBoyJs);
 	}
 	if(document.querySelector('.rsvp')) {
 		console.log(document.querySelector('.rsvp'));

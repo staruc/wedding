@@ -2,7 +2,7 @@
 jQuery(function($)
 {
 	//Load posts on page load
-
+/*
 	if($('.waypoint_form'))
 		$('.waypoint_form').waypoint(function(direction) {
 
@@ -11,7 +11,7 @@ jQuery(function($)
 		}, {
 			offset: '100%'
 		});
-
+*/
 
 	$('.newbiz').click(function(nb) {
 		nb.preventDefault();
@@ -19,25 +19,28 @@ jQuery(function($)
 
 
 		$('.form_curtain').click();
-		$('html,body').animate({
-		    scrollTop: $('#gravity_contact').offset().top - 50
-		}, 500);
+
 	});
 
-
+	gForm_initAll();
 	$('.gravity_init').on('click', function() {
+		console.log('init_click');
 		gForm_initAll();
 	});
 
 	function gForm_initAll() {
 
 		gravityformsJs.onload = function() {
+
+			document.body.appendChild(maskedInputJs);
 			gravityBoy_init();
 		}
+		
 		document.body.appendChild(jsonJs);
 		document.body.appendChild(placeholdersJs);
-		document.body.appendChild(maskedInputJs);
 		document.body.appendChild(gravityformsJs);
+
+		
 	} 
 
 	//Main ajax function
@@ -46,6 +49,9 @@ jQuery(function($)
 		var ajax_url = ajax_gravityboy_params.ajax_url;
 		var post_id = ajax_gravityboy_params.post_id;
 		var form_id = $('#gravity_contact').data('form-id');
+		var invite_id = $('input[name="invite_id"]').val();
+		var guest_first = $('input[name="guest_first"]').val();
+		var guest_last = $('input[name="guest_last"]').val();
 
 		$.ajax({
 			type: 'GET',
@@ -54,28 +60,31 @@ jQuery(function($)
 			data: {
 				action: 'gravityboy',
 				post_id: post_id,
-				form_id: form_id
+				form_id: form_id,
+				invite_id: invite_id,
+				guest_first: guest_first,
+				guest_last: guest_last
 			},
 			beforeSend: function ()
 			{
+				$('.form_intro').slideUp(200);	
 
-				$.scrollify.disable();
-				console.log('form_id ' + form_id);
-				$('.good_ans').html('Good answer. Just a sec...');
+				console.log('form_id: ' + form_id);
+				console.log('guest: ' + guest_first);
+				//$('.good_ans').html('Good answer. Just a sec...');
 			},
 			success: function(data)
 			{
+				console.log('working');
 
 				$('#gravity_contact').html(data);
+
+
 				//setTimeout(function() {
 
-					if( form_id == 2 || form_id == 4 ) {
-						$('.gravity_init').slideUp(200);
-
-						$('html,body').animate({
-						    scrollTop: $('.gravity_init').offset().top - 50
-						}, 500);
-					}
+				$('html,body').animate({
+				    scrollTop: $('#gravity_contact').offset().top - 100
+				}, 350);
 
 				//}, 300);
 				$('input[type="file"]').on('change', function() {
@@ -91,11 +100,9 @@ jQuery(function($)
 					}
 				});
 
-				$(document).on('gform_confirmation_loaded', function(event, formId) {
-					$('.form_intro').slideUp(200);
-
+				//$(document).on('gform_confirmation_loaded', function(event, formId) {
 					
-				});
+				//});
 
 
 			},
